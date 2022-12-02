@@ -27,7 +27,7 @@
 
 
 
-def run_algorithm(input)
+def part_one(input)
 
   total_score = 0
   round = 0
@@ -61,9 +61,50 @@ def run_algorithm(input)
   end
 end
 
+def part_two(input)
+
+  total_score = 0
+  round = 0
+
+  for i in 0..input.count-1
+    if i.even?
+      score = 0
+      round += 1
+      # A = Rock, B = Paper, C = Scissors
+      # X = Lose, Y = Draw, Z = Win
+      elf = input[i]
+      player = input[i+1]
+      player_item=""
+      
+      
+      #score for outcome of the game
+      # Loss = 0, Draw = 3, Win = 6
+      if elf == "A" # Rock
+        if player == "X" then player_item = "Scissors" elsif player == "Y" then player_item = "Rock" else player_item = "Paper" end
+        if player_item == "Rock" then score += 3 elsif player_item == "Paper" then score += 6 else score += 0 end
+      elsif elf == "B" # Paper
+        if player == "X" then player_item = "Rock" elsif player == "Y" then player_item = "Paper" else player_item = "Scissors" end
+        if player_item == "Rock" then score += 0 elsif player_item == "Paper" then score += 3 else score += 6 end
+      elsif elf == "C" # Scissors
+        if player == "X" then player_item = "Paper" elsif player == "Y" then player_item = "Scissors" else player_item = "Rock" end
+        if player_item == "Rock" then score += 6 elsif player_item == "Paper" then score += 0 else score += 3 end
+      end
+
+      # score for picked item
+      if player_item == "Rock" then score += 1 elsif player_item == "Paper" then score += 2 else score += 3 end
+
+      total_score += score
+
+      puts "Round: #{round} (#{elf}, #{player}), Score: #{score}"
+      puts "Total Score: #{total_score}"
+    end
+  end
+end
+
 def set_input
 
-  input = "
+  input = 
+  "A X
   B X
   C X
   C Y
@@ -2567,4 +2608,5 @@ def set_input
   input = input.gsub(/\s+/, "").split("")
 end
 
-run_algorithm(set_input)
+# part_one(set_input)
+part_two(set_input)
