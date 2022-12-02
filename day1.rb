@@ -19,6 +19,32 @@ def part_1(elf_food)
   print elf_totals
 end
 
+def part_2(elf_food)
+
+  list = elf_food.split(/\n/) #create array of elf foods, splitting at each line
+
+  elf_totals = []
+  calories = 0
+  for i in 1..list.count
+    list[i] = list[i].to_i
+    if list[i] > 0 # the empty lines denote a new elf, which converted to an integer is 0
+      calories += list[i]
+    elsif i == list.count || list[i]==0
+      elf_totals << calories
+      calories = 0
+    end
+  end
+
+  elf_totals = elf_totals.sort.reverse
+
+  top3 = 0
+  for i in 0..2
+    top3 += elf_totals[i].to_i
+  end
+
+  print top3
+end
+
 def elf_food
 
   elf_food ="
@@ -2278,4 +2304,5 @@ def elf_food
   "
 end
 
-part_1(elf_food)
+# part_1(elf_food)
+part_2(elf_food)
