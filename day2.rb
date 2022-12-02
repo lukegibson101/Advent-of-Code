@@ -2605,7 +2605,7 @@ def set_input
   B Y
   B Y"
 
-  input = input.gsub(/\s+/, "").split("")
+  input = input.gsub(/\s+/, "").split("") #remove whitespace to create an unbroken string then split each character nto an array
 end
 
 # part_one(set_input)
