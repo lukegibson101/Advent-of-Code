@@ -314,7 +314,7 @@ for i in 0..list.count-1
     sum += split[0]
     
 end  
-print "Part 1: #{sum}"
+puts "Part 1: #{sum}"
 
 sum=0
 x = 1
@@ -334,7 +334,9 @@ for i in 0..list.count-1
       group = [] 
     end
 end  
-print "Part 2 #{sum}"
+
+puts "Part 2 #{sum}"
+
 
 # --- Day 3: Rucksack Reorganization ---
 # One Elf has the important job of loading all of the rucksacks with supplies for the jungle journey. Unfortunately, that Elf didn't quite follow the packing instructions, and so a few items now need to be rearranged.
