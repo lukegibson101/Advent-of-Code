@@ -1012,19 +1012,13 @@ def day4(input)
     input[i] = input[i].gsub(/\s+/, "")
     input[i] = input[i].split(",")
     input[i] = input[i][0].split("-") + input[i][1].split("-")
-    input[i][0] = input[i][0].to_i
-    input[i][1] = input[i][1].to_i
-    input[i][2] = input[i][2].to_i
-    input[i][3] = input[i][3].to_i
-    if (input[i][0] <= input[i][2] && input[i][1] >= input[i][3]) #(input[i][0] >= input[i][2] || input[i][1] <= input[i][3])
-      part1_count += 1
-    elsif (input[i][0] >= input[i][2] && input[i][1] <= input[i][3])
-      part1_count +=1
+    for x in 0..3
+      input[i][x] = input[i][x].to_i
     end
-    if (input[i][2].between?(input[i][0], input[i][1]) || input[i][3].between?(input[i][0], input[i][1])) #(input[i][0] >= input[i][2] || input[i][1] <= input[i][3])
+    if (input[i][0]..input[i][1]).cover?(input[i][2]..input[i][3]) || (input[i][2]..input[i][3]).cover?(input[i][0]..input[i][1])
+      part1_count += 1
       part2_count += 1
-    elsif (input[i][0] >= input[i][2] && input[i][1] <= input[i][3])
-      part2_count +=1
+    elsif (input[i][2].between?(input[i][0], input[i][1]) || input[i][3].between?(input[i][0], input[i][1]))
     end
   end
   puts "Part 1: Total number of contained jobs: #{part1_count}"
