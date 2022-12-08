@@ -107,7 +107,6 @@ def move_crates(crates, instructions)
   instructions = instructions.split(/\n/)
   for i in 0..instructions.count-1
     instructions[i] = instructions[i].gsub(/\s+/, "").gsub("move", "").gsub("from", " ").gsub("to", " ").split(" ")
-    # p instructions[i]
     move = instructions[i][0].to_i
     from = instructions[i][1].to_i - 1
     to = instructions[i][2].to_i - 1
@@ -130,7 +129,6 @@ def move_crates_9001(crates, instructions)
   instructions = instructions.split(/\n/)
   for i in 0..instructions.count-1
     instructions[i] = instructions[i].gsub(/\s+/, "").gsub("move", "").gsub("from", " ").gsub("to", " ").split(" ")
-    # p instructions[i]
     move = instructions[i][0].to_i
     from = instructions[i][1].to_i - 1
     to = instructions[i][2].to_i - 1
