@@ -96,7 +96,7 @@ def run_update(input)
   current_directory = []
   dir_to_delete = []
   directory_sizes = Hash.new { |k, v| k[v] = 0}
-  results = input
+  input
     .split("\n").map(&:chomp).map{_1.split(' ')}
     .each do |line|
       case line
